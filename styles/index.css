@@ -1083,6 +1083,160 @@ img {
 }
 
 /* ==========================================================================
+   Bento Box Configurator
+   ========================================================================== */
+.config-container {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+}
+.bento-dashboard {
+    flex: 2;
+    background: var(--clr-white);
+    padding: 2.5rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--clr-border);
+}
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--clr-border);
+}
+.dashboard-header h3 {
+    font-size: 1.5rem;
+}
+.selection-tracker {
+    font-size: 0.9rem;
+    color: var(--clr-muted);
+    font-weight: 500;
+}
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 120px);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.bento-slot {
+    border: 2px dashed var(--clr-border);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: var(--clr-muted);
+    text-align: center;
+    padding: 1rem;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    background: var(--clr-vanilla);
+}
+.bento-slot.filled {
+    border: 2px solid var(--clr-caramel);
+    background: var(--clr-white);
+    padding: 0;
+}
+.bento-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: dropIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+@keyframes dropIn {
+    0% { transform: scale(1.2); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.dashboard-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.bento-checkout-btn.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    background: var(--clr-muted);
+}
+.clear-box-btn {
+    background: none;
+    border: none;
+    color: var(--clr-muted);
+    font-size: 0.85rem;
+    padding: 0.5rem;
+}
+.clear-box-btn:hover {
+    color: var(--clr-caramel);
+}
+
+.bakery-shelf {
+    flex: 1;
+    background: var(--clr-white);
+    padding: 2.5rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--clr-border);
+}
+.bakery-shelf h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+.bakery-shelf p {
+    font-size: 0.9rem;
+    color: var(--clr-muted);
+    margin-bottom: 1.5rem;
+}
+.shelf-scroll {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+.shelf-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+.shelf-scroll::-webkit-scrollbar-thumb {
+    background: var(--clr-border);
+    border-radius: 3px;
+}
+.shelf-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+}
+.shelf-item:hover {
+    border-color: var(--clr-caramel);
+    box-shadow: var(--shadow-soft);
+    transform: translateY(-2px);
+}
+.shelf-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+}
+.item-info h4 {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+}
+.btn-add {
+    font-size: 0.8rem;
+    color: var(--clr-caramel);
+    font-weight: 600;
+}
+
+/* ==========================================================================
    Mobile Responsiveness
    ========================================================================== */
 @media (max-width: 1024px) {
@@ -1152,7 +1306,27 @@ img {
         left: 0;
     }
     .mega-menu {
-        display: none !important;
+        position: static;
+        display: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        box-shadow: none;
+        border-bottom: none;
+        padding: 1rem 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        background: transparent;
+    }
+    .mega-menu.mobile-open {
+        display: block;
+    }
+    .mega-container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .mega-grid {
+        grid-template-columns: 1fr 1fr;
     }
     .cart-drawer {
         width: 100vw;
@@ -1161,5 +1335,23 @@ img {
     .floating-cta {
         bottom: 15px;
         right: 15px;
+    }
+    .config-container {
+        flex-direction: column;
+    }
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 100px);
+    }
+    .bakery-shelf {
+        width: 100%;
+    }
+    .hero-title {
+        font-size: 3rem;
+    }
+}
+@media (max-width: 400px) {
+    .hero-title {
+        font-size: 2.5rem;
     }
 }

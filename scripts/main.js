@@ -142,4 +142,63 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Curate Your Box (Bento Configurator) Logic ---
+    const shelfItems = document.querySelectorAll('.shelf-item');
+    const bentoSlots = document.querySelectorAll('.bento-slot');
+    const bentoCheckoutBtn = document.getElementById('bento-checkout-btn');
+    const clearBoxBtn = document.getElementById('clear-box-btn');
+    const selectionTracker = document.getElementById('selection-tracker');
+    let selectedCount = 0;
+    const MAX_SLOTS = 6;
+
+    if (shelfItems.length > 0 && bentoSlots.length > 0) {
+        
+        // Add item to box
+        shelfItems.forEach(item => {
+            item.addEventListener('click', () => {
+                if (selectedCount < MAX_SLOTS) {
+                    const imgSrc = item.getAttribute('data-img');
+                    const itemName = item.getAttribute('data-name');
+                    
+                    // Find first empty slot
+                    for (let i = 0; i < bentoSlots.length; i++) {
+                        if (bentoSlots[i].classList.contains('empty')) {
+                            // Fill it
+                            bentoSlots[i].classList.remove('empty');
+                            bentoSlots[i].classList.add('filled');
+                            bentoSlots[i].innerHTML = `<img src="${imgSrc}" alt="${itemName}">`;
+                            selectedCount++;
+                            updateBentoState();
+                            break;
+                        }
+                    }
+                }
+            });
+        });
+
+        // Clear boxes
+        clearBoxBtn.addEventListener('click', () => {
+            bentoSlots.forEach(slot => {
+                slot.classList.remove('filled');
+                slot.classList.add('empty');
+                slot.innerHTML = 'Tap below to add';
+            });
+            selectedCount = 0;
+            updateBentoState();
+        });
+
+        // Update UI State
+        function updateBentoState() {
+            selectionTracker.textContent = `${selectedCount} / 6 Treats Selected`;
+            
+            if (selectedCount === MAX_SLOTS) {
+                bentoCheckoutBtn.classList.remove('disabled');
+                bentoCheckoutBtn.innerHTML = 'Add Custom Box to Cart - $32.00';
+            } else {
+                bentoCheckoutBtn.classList.add('disabled');
+                bentoCheckoutBtn.innerHTML = 'Box Incomplete - $32.00';
+            }
+        }
+    }
+
 });

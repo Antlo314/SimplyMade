@@ -210,6 +210,69 @@
         </div>
     </section>
 
+    <!-- Curate Your Box Configurator -->
+    <section class="configurator section bg-vanilla" id="build-a-box">
+        <div class="container text-center reveal-up">
+            <span class="kicker">The Custom Experience</span>
+            <h2 class="section-title">Curate Your 1/2 Dozen Box</h2>
+            <div class="divider center"></div>
+            <p class="section-desc">Handpick 6 of your favorite treats. We will lovingly bake and pack them in our signature Half-Dozen Gift Box for just $32.00.</p>
+        </div>
+
+        <div class="container mt-4 config-container reveal-up">
+            <!-- The Empty Box -->
+            <div class="bento-dashboard">
+                <div class="dashboard-header">
+                    <h3>Your Signature Box</h3>
+                    <span class="selection-tracker" id="selection-tracker">0 / 6 Treats Selected</span>
+                </div>
+                
+                <div class="bento-grid" id="bento-grid">
+                    <div class="bento-slot empty" data-slot="1">Tap below to add</div>
+                    <div class="bento-slot empty" data-slot="2">Tap below to add</div>
+                    <div class="bento-slot empty" data-slot="3">Tap below to add</div>
+                    <div class="bento-slot empty" data-slot="4">Tap below to add</div>
+                    <div class="bento-slot empty" data-slot="5">Tap below to add</div>
+                    <div class="bento-slot empty" data-slot="6">Tap below to add</div>
+                </div>
+
+                <div class="dashboard-footer">
+                    <button class="btn btn-primary w-100 bento-checkout-btn disabled" id="bento-checkout-btn">Box Incomplete - $32.00</button>
+                    <button class="btn clear-box-btn" id="clear-box-btn"><i class="fa-solid fa-rotate-right"></i> Start Over</button>
+                </div>
+            </div>
+
+            <!-- The Bakery Shelf Options -->
+            <div class="bakery-shelf">
+                <h3>The Bakery Shelf</h3>
+                <p>Tap a treat to drop it into your box.</p>
+                <div class="shelf-scroll">
+                    <div class="shelf-item" data-id="cookie-choc" data-name="Chocolate Chunk" data-img="images/cookie_macro.png">
+                        <img src="images/cookie_macro.png" alt="Chocolate Chunk Cookie">
+                        <div class="item-info">
+                            <h4>Chocolate Chunk</h4>
+                            <span class="btn-add"><i class="fa-solid fa-plus"></i> Add</span>
+                        </div>
+                    </div>
+                    <div class="shelf-item" data-id="pie-slice" data-name="Apple Pie Slice" data-img="images/apple_pie.png">
+                        <img src="images/apple_pie.png" alt="Apple Pie">
+                        <div class="item-info">
+                            <h4>Apple Pie Slice</h4>
+                            <span class="btn-add"><i class="fa-solid fa-plus"></i> Add</span>
+                        </div>
+                    </div>
+                    <div class="shelf-item" data-id="surprise-treat" data-name="Baker's Surprise" data-img="images/gift_box.png">
+                        <img src="images/gift_box.png" alt="Surprise Treat">
+                        <div class="item-info">
+                            <h4>Baker's Surprise</h4>
+                            <span class="btn-add"><i class="fa-solid fa-plus"></i> Add</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Baking Logistics FAQ -->
     <section class="faq-section section bg-vanilla" id="faq">
         <div class="container text-center reveal-up">
